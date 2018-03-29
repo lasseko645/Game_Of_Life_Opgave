@@ -1,0 +1,74 @@
+package sample.com.ushulabubko;
+
+import java.util.List;
+
+public class Unit {
+
+    private boolean alive;
+    private int livingNaighbours = 0;
+    private String name;
+    private List neighborList;
+
+    public String updateGen(){
+
+        String check = "its working maybe";
+
+        if (isAlive() == false && getLivingNaighbours() == 3){
+
+            setAlive(true);
+
+            System.out.println("unit is born :D ");
+
+        } else if ((getLivingNaighbours() == 2 || getLivingNaighbours() ==3) && isAlive() == true){
+
+            //nothing will happen here as acording to the mathmatical properties desired by the program im making
+            System.out.println("unit survived :) ");
+
+
+        } else {
+            setAlive(false);
+
+            System.out.println("unit is ded :( ");
+        }
+
+        System.out.println(check);
+        return check;
+        // til test (
+
+        //  )
+
+    }
+
+
+    public boolean isAlive() {
+        return alive;
+    }
+
+    public  void setAlive(boolean alive) {
+        this.alive = alive;
+    }
+
+    public int getLivingNaighbours() {
+        return livingNaighbours;
+    }
+
+    public void setLivingNaighbours(int livingNaighbours) {
+        this.livingNaighbours = livingNaighbours;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List getNeighborList() {
+        return neighborList;
+    }
+
+    public void setNeighborList(List neighborList) {
+        this.neighborList = neighborList;
+    }
+}
