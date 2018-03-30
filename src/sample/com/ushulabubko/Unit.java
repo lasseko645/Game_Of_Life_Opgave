@@ -1,13 +1,10 @@
 package sample.com.ushulabubko;
 
-import java.util.List;
 
 public class Unit {
 
     private boolean alive;
     private int livingNaighbours = 0;
-    private String name;
-    private List neighborList;
 
     public String updateGen(){
 
@@ -56,19 +53,5 @@ public class Unit {
         this.livingNaighbours = livingNaighbours;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public List getNeighborList() {
-        return neighborList;
-    }
-
-    public void setNeighborList(List neighborList) {
-        this.neighborList = neighborList;
-    }
 }
