@@ -11,6 +11,11 @@ public class Game{
 private static int Y_AXIS = 25;
 private static int X_AXIS = 20;
 
+//this was added after my sick period when i had spend some time troubleshooting my issues
+//as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
+//so it was my idea that this might help me sort out the problem easier... it ended up being a wrong return statement and a missing semicollon
+private Game world;
+
 
 private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
@@ -33,6 +38,15 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
             }
         }
     }
+
+    // i went in after some time with sicness and trouble to get things to work and looked up some help
+    // i found that it could work fine do make a game object outside of the main method as follows
+    public static Game initialize() {
+        Game world = new Game();
+        return world;
+    }
+
+
 
     // i now take on the part of the assignment that is ment to first run the whole process when the game launches, for the soul purpose of setting the living neighborsfor each unit in the game world
     public Game setupUpdate(){
@@ -108,15 +122,13 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
             }
         }
 
-        //now i have to make it son that after the randome generator has done its thing and the amount of living naighbors have been set for each unit in the gameworld, that the game runs the update once for all the units just to make it so that the rules that define the world will take place
+        //now i have to make it so that after the random generator has done its thing and the amount of living naighbors have been set for each unit in the gameworld, that the game runs the update once for all the units just to make it so that the rules that define the world will take place
         for (int y_update_setup = 0; y_update_setup < y_axis_max; y_update_setup++){
             for (int x_update_setup = 0; x_update_setup < x_axis_max; x_update_setup++){
                 worldSize[x_update_setup][y_update_setup].updateGen();
             }
         }
-
-
-
+        return world;
     }
 
 

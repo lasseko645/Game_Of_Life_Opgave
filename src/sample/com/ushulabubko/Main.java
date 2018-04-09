@@ -1,4 +1,4 @@
-package sample;
+package sample.com.ushulabubko;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
