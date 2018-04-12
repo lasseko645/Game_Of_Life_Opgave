@@ -11,6 +11,9 @@ public class MainTest {
         //gol.debugWorldMethod();
 
         gol.setupUpdate();
+        gol.setupUpdate();
+        gol.setupUpdate();
+        gol.setupUpdate();
 
 
 

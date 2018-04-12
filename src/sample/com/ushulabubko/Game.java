@@ -8,8 +8,8 @@ public class Game{
 
 
     //here i make a size to be later used to define the size of my 2d array
-private static int Y_AXIS = 7;
-private static int X_AXIS = 7;
+private static int Y_AXIS = 15;
+private static int X_AXIS = 15;
 
 //this was added after my sick period when i had spend some time troubleshooting my issues
 //as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
@@ -50,21 +50,19 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
     // i now take on the part of the assignment that is ment to first run the whole process when the game launches, for the soul purpose of setting the living neighborsfor each unit in the game world
     public Game setupUpdate(){
-
-        int livingNaighbors = 0;
         //i need to set the parameters for this first method to run by the world size
 
         int x_axis_max = this.worldSize[0].length;
         int y_axis_max = this.worldSize.length;
 
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
-            System.out.println("\n");
+            System.out.println("");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
 
                 if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
-                    System.out.print(" @ ");
+                    System.out.print("@");
                 }else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
-                    System.out.print(" O ");
+                    System.out.print("O");
                 }
 
                 int livingNaighborssetup = 0;
