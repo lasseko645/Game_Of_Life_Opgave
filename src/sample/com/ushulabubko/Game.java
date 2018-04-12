@@ -8,8 +8,8 @@ public class Game{
 
 
     //here i make a size to be later used to define the size of my 2d array
-private static int Y_AXIS = 15;
-private static int X_AXIS = 15;
+private static int Y_AXIS = 8;
+private static int X_AXIS = 8;
 
 //this was added after my sick period when i had spend some time troubleshooting my issues
 //as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
@@ -58,6 +58,8 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
             System.out.println("");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
+
+                System.out.print(" ");
 
                 if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
                     System.out.print("@");
@@ -135,19 +137,25 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
                 worldSize[x_axis_setup][y_axis_setup].setLivingNaighbours(livingNaighborssetup);
                 //worldSize[x_axis_setup][y_axis_setup].updateGen();
 
+
+
             }
         }
 
         //now i have to make it so that after the random generator has done its thing and the amount of living naighbors have been set for each unit in the gameworld, that the game runs the update once for all the units just to make it so that the rules that define the world will take place
         for (int y_update_setup = 0; y_update_setup < y_axis_max; y_update_setup++){
             //for test
-            System.out.println("\n");
+            //System.out.println("\n");
             for (int x_update_setup = 0; x_update_setup < x_axis_max; x_update_setup++){
                 //for test
                 //System.out.print("f");
                 worldSize[x_update_setup][y_update_setup].updateGen();
             }
         }
+
+        // i ran into an issue in the console with the world to be rendered right after the old one when i tried to show multiple iterations, and i can solve it easyly like this
+        System.out.println("\n");
+
         return world;
     }
 
