@@ -6,6 +6,14 @@ public class Unit {
     private boolean alive;
     private int livingNaighbours = 0;
 
+
+    public Unit(){
+
+
+
+    }
+
+
     public String updateGen(){
 
         String check = "its working maybe";

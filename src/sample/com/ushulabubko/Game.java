@@ -20,7 +20,7 @@ private Game world;
 private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
 //i will here make my contructor for the game to eventually be used when game launches to build the world for this game to take place based on the 2d arrays inputs
-    private Game(){
+    public Game(){
         for (int y_axis = 0; y_axis < Y_AXIS; y_axis ++){
             for (int x_axis = 0; x_axis < X_AXIS; x_axis ++){
                 Random alive_Or_Dead = new Random();
@@ -58,63 +58,75 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
         int y_axis_max = this.worldSize.length;
 
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
+            //System.out.println("\n");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
 
+                //if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
+                  //  System.out.print("@");
+                //}else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
+                  //  System.out.print("O");
+                //}
+
+                //for test
+                //System.out.print("f");
+
                 //checks north
-                if (y_axis_setup > 0) {
-                    if (worldSize[x_axis_setup][y_axis_setup - 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+               try {
+                   if (y_axis_setup > 0) {
+                       if (worldSize[x_axis_setup][y_axis_setup - 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks northeast
-                if (x_axis_setup < X_AXIS - 1 && y_axis_setup > 0) {
-                    if (worldSize[x_axis_setup + 1][y_axis_setup - 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //checks northeast
+                   if (x_axis_setup < X_AXIS - 1 && y_axis_setup > 0) {
+                       if (worldSize[x_axis_setup + 1][y_axis_setup - 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks east
-                if (x_axis_setup < X_AXIS - 1) {
-                    if (worldSize[x_axis_setup + 1][y_axis_setup].isAlive()){
-                        livingNaighbors++;
-                    }
-                }
+                   //checks east
+                   if (x_axis_setup < X_AXIS - 1) {
+                       if (worldSize[x_axis_setup + 1][y_axis_setup].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks southeast
-                if (x_axis_setup < X_AXIS - 1 && y_axis_setup < Y_AXIS - 1) {
-                    if (worldSize[x_axis_setup + 1][y_axis_setup + 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //checks southeast
+                   if (x_axis_setup < X_AXIS - 1 && y_axis_setup < Y_AXIS - 1) {
+                       if (worldSize[x_axis_setup + 1][y_axis_setup + 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks south
-                if (y_axis_setup < Y_AXIS - 1) {
-                    if (worldSize[x_axis_setup][y_axis_setup + 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //checks south
+                   if (y_axis_setup < Y_AXIS - 1) {
+                       if (worldSize[x_axis_setup][y_axis_setup + 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks southwest
-                if (y_axis_setup < Y_AXIS - 1 && x_axis_setup > 0) {
-                    if (worldSize[x_axis_setup - 1][y_axis_setup + 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //checks southwest
+                   if (y_axis_setup < Y_AXIS - 1 && x_axis_setup > 0) {
+                       if (worldSize[x_axis_setup - 1][y_axis_setup + 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //checks west
-                if (x_axis_setup > 0) {
-                    if (worldSize[x_axis_setup - 1][y_axis_setup].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //checks west
+                   if (x_axis_setup > 0) {
+                       if (worldSize[x_axis_setup - 1][y_axis_setup].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
 
-                //and lastly checks the northwest
-                if (x_axis_setup > 0 && y_axis_setup > 0) {
-                    if (worldSize[x_axis_setup - 1][y_axis_setup - 1].isAlive()) {
-                        livingNaighbors++;
-                    }
-                }
+                   //and lastly checks the northwest
+                   if (x_axis_setup > 0 && y_axis_setup > 0) {
+                       if (worldSize[x_axis_setup - 1][y_axis_setup - 1].isAlive()) {
+                           livingNaighbors++;
+                       }
+                   }
+               } catch (Exception e){}
 
                 //here i set the amount of living naighbors for the any unit that runs trought this set of if statements
                 worldSize[x_axis_setup][y_axis_setup].setLivingNaighbours(livingNaighbors);
@@ -124,12 +136,50 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
         //now i have to make it so that after the random generator has done its thing and the amount of living naighbors have been set for each unit in the gameworld, that the game runs the update once for all the units just to make it so that the rules that define the world will take place
         for (int y_update_setup = 0; y_update_setup < y_axis_max; y_update_setup++){
+
+            //for test
+            System.out.println("\n");
+
             for (int x_update_setup = 0; x_update_setup < x_axis_max; x_update_setup++){
+
+                //for test
+                System.out.print("f");
+
                 worldSize[x_update_setup][y_update_setup].updateGen();
             }
         }
         return world;
     }
 
+    public static int getyAxis() {
+        return Y_AXIS;
+    }
 
+    public static void setyAxis(int yAxis) {
+        Y_AXIS = yAxis;
+    }
+
+    public static int getxAxis() {
+        return X_AXIS;
+    }
+
+    public static void setxAxis(int xAxis) {
+        X_AXIS = xAxis;
+    }
+
+    public Game getWorld() {
+        return world;
+    }
+
+    public void setWorld(Game world) {
+        this.world = world;
+    }
+
+    public Unit[][] getWorldSize() {
+        return worldSize;
+    }
+
+    public void setWorldSize(Unit[][] worldSize) {
+        this.worldSize = worldSize;
+    }
 }
