@@ -14,7 +14,7 @@ public class Unit {
     }
 
 
-    public String updateGen(){
+    public void updateGen(){
 
         String check = "its working maybe";
 
@@ -36,8 +36,8 @@ public class Unit {
             System.out.println("unit is ded :( ");
         }
 
-        System.out.println(check);
-        return check;
+        //System.out.println(check);
+        //return check;
         // til test (
 
         //  )

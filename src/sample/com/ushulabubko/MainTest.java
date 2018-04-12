@@ -8,6 +8,8 @@ public class MainTest {
 
         Unit[][] worldMap = gol.getWorldSize();
 
+        //gol.debugWorldMethod();
+
         gol.setupUpdate();
 
 

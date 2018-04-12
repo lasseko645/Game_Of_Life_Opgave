@@ -8,8 +8,8 @@ public class Game{
 
 
     //here i make a size to be later used to define the size of my 2d array
-private static int Y_AXIS = 25;
-private static int X_AXIS = 20;
+private static int Y_AXIS = 7;
+private static int X_AXIS = 7;
 
 //this was added after my sick period when i had spend some time troubleshooting my issues
 //as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
@@ -58,97 +58,119 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
         int y_axis_max = this.worldSize.length;
 
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
-            //System.out.println("\n");
+            System.out.println("\n");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
 
-                //if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
-                  //  System.out.print("@");
-                //}else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
-                  //  System.out.print("O");
-                //}
+                if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
+                    System.out.print(" @ ");
+                }else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
+                    System.out.print(" O ");
+                }
+
+                int livingNaighborssetup = 0;
 
                 //for test
                 //System.out.print("f");
 
                 //checks north
-               try {
                    if (y_axis_setup > 0) {
                        if (worldSize[x_axis_setup][y_axis_setup - 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks northeast
                    if (x_axis_setup < X_AXIS - 1 && y_axis_setup > 0) {
                        if (worldSize[x_axis_setup + 1][y_axis_setup - 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks east
                    if (x_axis_setup < X_AXIS - 1) {
                        if (worldSize[x_axis_setup + 1][y_axis_setup].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks southeast
                    if (x_axis_setup < X_AXIS - 1 && y_axis_setup < Y_AXIS - 1) {
                        if (worldSize[x_axis_setup + 1][y_axis_setup + 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks south
                    if (y_axis_setup < Y_AXIS - 1) {
                        if (worldSize[x_axis_setup][y_axis_setup + 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks southwest
                    if (y_axis_setup < Y_AXIS - 1 && x_axis_setup > 0) {
                        if (worldSize[x_axis_setup - 1][y_axis_setup + 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //checks west
                    if (x_axis_setup > 0) {
                        if (worldSize[x_axis_setup - 1][y_axis_setup].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
 
                    //and lastly checks the northwest
                    if (x_axis_setup > 0 && y_axis_setup > 0) {
                        if (worldSize[x_axis_setup - 1][y_axis_setup - 1].isAlive()) {
-                           livingNaighbors++;
+                           livingNaighborssetup++;
                        }
                    }
-               } catch (Exception e){}
+
+
+
+                //worldSize[x_axis_setup][y_axis_setup].updateGen();
+
 
                 //here i set the amount of living naighbors for the any unit that runs trought this set of if statements
-                worldSize[x_axis_setup][y_axis_setup].setLivingNaighbours(livingNaighbors);
+                worldSize[x_axis_setup][y_axis_setup].setLivingNaighbours(livingNaighborssetup);
+                //worldSize[x_axis_setup][y_axis_setup].updateGen();
 
             }
         }
 
         //now i have to make it so that after the random generator has done its thing and the amount of living naighbors have been set for each unit in the gameworld, that the game runs the update once for all the units just to make it so that the rules that define the world will take place
         for (int y_update_setup = 0; y_update_setup < y_axis_max; y_update_setup++){
-
             //for test
             System.out.println("\n");
-
             for (int x_update_setup = 0; x_update_setup < x_axis_max; x_update_setup++){
-
                 //for test
-                System.out.print("f");
-
+                //System.out.print("f");
                 worldSize[x_update_setup][y_update_setup].updateGen();
             }
         }
         return world;
+    }
+
+    public void debugWorldMethod(){
+        int x_axis_max = this.worldSize[0].length;
+        int y_axis_max = this.worldSize.length;
+
+        for (int y_update_setup = 0; y_update_setup < y_axis_max; y_update_setup++){
+            //for test
+            System.out.println("\n");
+            for (int x_update_setup = 0; x_update_setup < x_axis_max; x_update_setup++){
+                //for test
+                if (worldSize[x_update_setup][y_update_setup].isAlive() == true){
+                    System.out.print("@");
+                }else if (worldSize[x_update_setup][y_update_setup].isAlive() == false){
+                    System.out.print("O");
+                }
+
+            }
+        }
+
     }
 
     public static int getyAxis() {
