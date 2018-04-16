@@ -1,4 +1,4 @@
-package sample.com.ushulabubko;
+package sample.com.ushulabubko.back_end;
 
 import java.util.ArrayList;
 import java.util.List;
