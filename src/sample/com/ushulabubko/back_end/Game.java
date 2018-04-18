@@ -8,8 +8,8 @@ public class Game{
 
 
     //here i make a size to be later used to define the size of my 2d array
-private static int Y_AXIS = 8;
-private static int X_AXIS = 8;
+private static int Y_AXIS = 5;
+private static int X_AXIS = 5;
 
 //this was added after my sick period when i had spend some time troubleshooting my issues
 //as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
@@ -62,7 +62,7 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
                 System.out.print(" ");
 
                 if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
-                    System.out.print("@");
+                    System.out.print("Ø");
                 }else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
                     System.out.print("O");
                 }

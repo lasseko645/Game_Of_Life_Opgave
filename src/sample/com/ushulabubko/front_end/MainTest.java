@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 import javafx.application.Application;
+import sample.com.ushulabubko.back_end.Game;
+import sample.com.ushulabubko.back_end.Unit;
 
 import java.io.IOException;
 
@@ -34,6 +36,12 @@ public class MainTest extends Application{
 
 
     public static void main(String[] args) {
+
+        Game gol = Game.initialize();
+
+        Unit[][] worldMap = gol.getWorldSize();
+
+        gol.setupUpdate();
 
         launch(args);
 
