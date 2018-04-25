@@ -3,8 +3,13 @@ package sample.com.ushulabubko.back_end;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import sample.com.ushulabubko.front_end.Controller;
+import javafx.fxml.*;
+
 
 public class Game{
+
+    //Controller console = new Controller();
 
 
     //here i make a size to be later used to define the size of my 2d array
@@ -54,17 +59,27 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
         int x_axis_max = this.worldSize[0].length;
         int y_axis_max = this.worldSize.length;
+        Controller console = new Controller();
 
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
             System.out.println("");
+            console.getTextPrintArea().setText("\n");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
 
+                //console.getTextPrintArea().setText(" ");
                 System.out.print(" ");
+                //Controller console = new Controller();
+
 
                 if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
                     System.out.print("Ø");
+                    //console.setTekstPrint("Ø");
+                    //console.getTextPrintArea().setText(" Ø ");
+
                 }else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
                     System.out.print("O");
+                    //console.setTekstPrint("O");
+                    //console.getTextPrintArea().setText(" O ");
                 }
 
                 int livingNaighborssetup = 0;
