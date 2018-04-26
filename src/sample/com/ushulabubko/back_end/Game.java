@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 import sample.com.ushulabubko.front_end.Controller;
 import javafx.fxml.*;
+import sample.com.ushulabubko.back_end.Unit;
 
 
 public class Game{
@@ -13,16 +14,25 @@ public class Game{
 
 
     //here i make a size to be later used to define the size of my 2d array
-private static int Y_AXIS = 5;
-private static int X_AXIS = 5;
+public static int Y_AXIS = 10;
+public static int X_AXIS = 10;
+
+public int getX_AXIS(){
+    return X_AXIS;
+}
+
+public int getY_AXIS(){
+    return Y_AXIS;
+}
+
 
 //this was added after my sick period when i had spend some time troubleshooting my issues
 //as far as i understand the resoning behind doing this instead of doing it inside the other big method is that the game can stil run if somthing is wrong with the main part of the program
 //so it was my idea that this might help me sort out the problem easier... it ended up being a wrong return statement and a missing semicollon
-private Game world;
+public static Game world;
 
 
-private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
+public static Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
 //i will here make my contructor for the game to eventually be used when game launches to build the world for this game to take place based on the 2d arrays inputs
     public Game(){
@@ -57,27 +67,35 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
     public Game setupUpdate(){
         //i need to set the parameters for this first method to run by the world size
 
+        String resultSet = "";
+
         int x_axis_max = this.worldSize[0].length;
         int y_axis_max = this.worldSize.length;
-        Controller console = new Controller();
+        //Controller console = new Controller();
+
+        //Controller.getTextPrintArea().setText("debug");
 
         for (int y_axis_setup = 0; y_axis_setup < y_axis_max; y_axis_setup++){
-            System.out.println("");
-            console.getTextPrintArea().setText("\n");
+            resultSet = resultSet + "\n";
+            //System.out.println("");
+            //Controller.getTextPrintArea().setText("\n");
             for (int x_axis_setup = 0; x_axis_setup < x_axis_max; x_axis_setup++){
 
                 //console.getTextPrintArea().setText(" ");
-                System.out.print(" ");
+                resultSet = resultSet + " ";
+                //System.out.print(" ");
                 //Controller console = new Controller();
 
 
                 if (worldSize[x_axis_setup][y_axis_setup].isAlive() == false){
-                    System.out.print("Ø");
+                    resultSet = resultSet + "Ø";
+                    //System.out.print("Ø");
                     //console.setTekstPrint("Ø");
                     //console.getTextPrintArea().setText(" Ø ");
 
                 }else if (worldSize[x_axis_setup][y_axis_setup].isAlive() == true){
-                    System.out.print("O");
+                    resultSet = resultSet + "O";
+                    //System.out.print("O");
                     //console.setTekstPrint("O");
                     //console.getTextPrintArea().setText(" O ");
                 }
@@ -145,12 +163,12 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
 
 
 
-                //worldSize[x_axis_setup][y_axis_setup].updateGen();
+                worldSize[x_axis_setup][y_axis_setup].updateGen();
 
 
                 //here i set the amount of living naighbors for the any unit that runs trought this set of if statements
                 worldSize[x_axis_setup][y_axis_setup].setLivingNaighbours(livingNaighborssetup);
-                //worldSize[x_axis_setup][y_axis_setup].updateGen();
+                worldSize[x_axis_setup][y_axis_setup].updateGen();
 
 
 
@@ -169,8 +187,9 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
         }
 
         // i ran into an issue in the console with the world to be rendered right after the old one when i tried to show multiple iterations, and i can solve it easyly like this
-        System.out.println("\n");
-
+        //System.out.println("\n");
+        //resultSet = resultSet + "\n";
+        //System.out.println(resultSet);
         return world;
     }
 
@@ -221,6 +240,8 @@ private Unit [][] worldSize = new Unit[X_AXIS][Y_AXIS];
     public Unit[][] getWorldSize() {
         return worldSize;
     }
+
+    //public Unit[][] getWorldSize0() {return worldSize[0];}
 
     public void setWorldSize(Unit[][] worldSize) {
         this.worldSize = worldSize;

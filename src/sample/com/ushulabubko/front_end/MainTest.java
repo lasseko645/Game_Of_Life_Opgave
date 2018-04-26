@@ -27,6 +27,13 @@ public class MainTest extends Application{
         primaryStage.setTitle("Hello World");
         primaryStage.setScene(new Scene(root, 300, 275));
         primaryStage.show();
+
+        Game gol = Game.initialize();
+
+        Unit[][] worldMap = gol.getWorldSize();
+
+        gol.setupUpdate();
+
     }
 
 
@@ -36,13 +43,6 @@ public class MainTest extends Application{
 
 
     public static void main(String[] args) {
-
-        Game gol = Game.initialize();
-
-        Unit[][] worldMap = gol.getWorldSize();
-
-        gol.setupUpdate();
-
         launch(args);
 
 /*       // this was from an early test ¤001
